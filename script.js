@@ -1,19 +1,16 @@
+const { createRef, createElement } = require("react");
 
-const todoform = document.querySelector('form');
-const todoinput = document.getElementById('todo-input');
-const btn = document.getElementById('btn')
-const todoList = document.getElementById("todo-list");
+const todoinput = document.getElementById("todo-input");
+const list = document.getElementById('todo-list')
 
-const alltodos = [];
-
-todoform.addEventListener('submit', (e) => {
-    e.preventDefault();
-})
-
-function createtodos(){
-    const todotext = todoinput.value.trim();
-    if(todotext.length > 0){
-        alltodos.unshift(todotext);
+function click(){
+    if(todoinput.value == ''){
+        alert("You must write something")
+    }
+    else{
+        let li = createElement('li');
+        li.innerHTML = todoinput.value;
+        list.appendChild(li);
     }
 }
 
