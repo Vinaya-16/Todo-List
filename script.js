@@ -1,17 +1,31 @@
-const { createRef, createElement } = require("react");
-
 const todoinput = document.getElementById("todo-input");
-const list = document.getElementById('todo-list')
+const addbtn = document.getElementById("btn");
+const list = document.getElementById("todo-list");
 
-function click(){
-    if(todoinput.value == ''){
-        alert("You must write something")
+addbtn.addEventListener("click",addtask);
+todoinput.addEventListener("click",(e)=>{
+    if(e.key === "Enter"){
+        addtask();
     }
-    else{
-        let li = createElement('li');
-        li.innerHTML = todoinput.value;
-        list.appendChild(li);
+})
+
+function addtask(){
+    const todotext = todoinput.value.trim();
+    if(todotext === "")
+    {
+        alert("Please Enter something!");
+        return;
     }
+    else
+    {
+        const listitem = document.createElement("li");
+        listitem.innerHTML = `
+        <span>${todotext}</span>
+        `;
+        list.appendChild(listitem);
+        todoinput.value = "";
+    }
+
 }
 
 
