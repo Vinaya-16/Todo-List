@@ -1,6 +1,6 @@
 body {
     background-color: #092635;
-    justify-items: center;
+    /* justify-items: center; */
 }
 
 
@@ -26,6 +26,7 @@ body {
     border-radius: 25px;
     width: 550px;
     color: #092635;
+    display: grid;
 }
 
 .box h3 {
@@ -44,6 +45,16 @@ body {
 }
 
 #btn {
+    border-radius: 10px;
+    border: none;
+    width: 75px;
+    height: 35px;
+    color: #ffffff;
+    background-color: #092635;
+    font-weight: bold;
+}
+
+.his{
     border-radius: 10px;
     border: none;
     width: 75px;
