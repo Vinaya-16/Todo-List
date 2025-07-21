@@ -21,37 +21,37 @@ function addtask() {
         storage(todotext);
         todoinput.value = "";
     }
-
+    
 }
 
-function storage(taskitem){
-    localStorage.setItem(Date.now(),JSON.stringify(taskitem));
+function storage(taskitem) {
+    const data = localStorage.setItem(Date.now(), JSON.stringify(taskitem));
+    const getdata = localStorage.getItem(Date.now(),JSON.stringify(taskitem));
+    console.log(getdata);
 }
 
-history.addEventListener("click",viewhis);
+history.addEventListener("click", viewhis);
 
-function viewhis(){
-    document.querySelector(".content").style.display = "grid";
+function viewhis() {
+    const cont = document.querySelector(".content");
+    cont.style.display = "grid";
     document.querySelector(".container").style.display = "none";
 }
 
-function viewitems(todo){
-        const listitem = document.createElement("li");
-        listitem.innerHTML = `
-        <span>${todo}</span>
-        `;
-        list.appendChild(listitem);
-}
 
-cross.addEventListener("click",clearhis);
+cross.addEventListener("click", clearhis);
 
-function clearhis(){
+function clearhis() {
     document.querySelector(".content").style.display = "none";
     document.querySelector(".container").style.display = "grid";
 }
 
+function tasklist(){
+        const listitem = document.createElement("li");
+        listitem.innerHTML = "";
+        list.appendChild(listitem);
+}
 // localStorage.clear();
-
 
 
 
