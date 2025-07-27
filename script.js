@@ -1,4 +1,4 @@
-
+let dataarray = [];
 const todoinput = document.getElementById("todo-input");
 const addbtn = document.getElementById("btn");
 const list = document.getElementById("todo-list");
@@ -21,13 +21,11 @@ function addtask() {
         storage(todotext);
         todoinput.value = "";
     }
-    
+
 }
 
 function storage(taskitem) {
-    const data = localStorage.setItem(Date.now(), JSON.stringify(taskitem));
-    const getdata = localStorage.getItem(Date.now(),JSON.stringify(taskitem));
-    console.log(getdata);
+    const data = localStorage.setItem("mytasks", JSON.stringify(taskitem));
 }
 
 history.addEventListener("click", viewhis);
@@ -36,6 +34,7 @@ function viewhis() {
     const cont = document.querySelector(".content");
     cont.style.display = "grid";
     document.querySelector(".container").style.display = "none";
+    storehis();
 }
 
 
@@ -46,10 +45,18 @@ function clearhis() {
     document.querySelector(".container").style.display = "grid";
 }
 
-function tasklist(){
-        const listitem = document.createElement("li");
-        listitem.innerHTML = "";
-        list.appendChild(listitem);
+function storehis() {
+    const tasks = JSON.parse(localStorage.getItem("mytasks"));
+    tasklist(tasks);
+}
+
+function tasklist(tasks) {
+    const container = document.querySelector("#todo-list");
+    container.innerHTML = `
+    <li class="todo">
+        ${tasks}
+    </li>
+    `
 }
 // localStorage.clear();
 
